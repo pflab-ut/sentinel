@@ -1,0 +1,18 @@
+[package]
+name = "segment"
+version = "0.1.0"
+authors = ["Joe Hattori <joe2ninja21@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.53"
+num = "0.4.0"
+
+logger = { path = "../logger" }
+mem = { path = "../mem" }
+utils = { path = "../utils" }
+
+[dev-dependencies]
+rand = "0.8.4"

@@ -1,0 +1,151 @@
+{
+    "vmm": {
+        "default_action": "trap",
+        "filter_action": "allow",
+        "filter": [
+            {
+                "syscall": "exit"
+            },
+            {
+                "syscall": "openat"
+            },
+            {
+                "syscall": "read"
+            },
+            {
+                "syscall": "write"
+            },
+            {
+                "syscall": "close"
+            },
+            {
+                "syscall": "clock_nanosleep"
+            },
+            {
+                "syscall": "getrandom",
+                "comment": "(Sentinel) Needed to call smoltcp::rand::rand_bytes()."
+            },
+            {
+                "syscall": "ppoll",
+                "comment": "(Sentinel) Needed to call smoltcp::phy::sys::wait()."
+            },
+            {
+                "syscall": "brk",
+                "comment": "Called for expanding the heap"
+            },
+            {
+                "syscall": "clock_gettime",
+                "comment": "Used for metrics and logging, via the helpers in utils/src/time.rs. It's not called on some platforms, because of vdso optimisations."
+            },
+            {
+                "syscall": "connect",
+                "comment": "Needed for vsock"
+            },
+            {
+                "syscall": "fstat",
+                "comment": ""
+            },
+            {
+                "syscall": "lseek",
+                "comment": "Used by the block device"
+            },
+            {
+                "syscall": "mremap",
+                "comment": "Used for re-allocating large memory regions, for example vectors"
+            },
+            {
+                "syscall": "munmap",
+                "comment": "Used for freeing memory"
+            },
+            {
+                "syscall": "recvfrom",
+                "comment": "Used by vsock to retrieve data from the socket"
+            },
+            {
+                "syscall": "sigaltstack",
+                "comment": "sigaltstack is used by Rust stdlib to remove alternative signal stack during thread teardown."
+            },
+            {
+                "syscall": "ptrace",
+                "comment": "Sentinel emulates linux kernel utilizing ptrace and waitpid."
+            },
+            {
+                "syscall": "wait4",
+                "comment": "Sentinel emulates linux kernel utilizing ptrace and waitpid."
+            },
+            {
+                "syscall": "getdents64",
+                "comment": "Used to read directory in the sandbox fs."
+            },
+            {
+                "syscall": "readlink",
+                "comment": "Maybe just provide a constant HashMap before applying seccomp? (FIXME)"
+            },
+            {
+                "syscall": "select",
+                "comment": "Used in smoltcp::phy::wait"
+            },
+            {
+                "syscall": "lstat",
+                "comment": ""
+            },
+            {
+                "syscall": "rt_sigaction",
+                "comment": ""
+            },
+            {
+                "syscall": "fcntl",
+                "comment": "Used by snapshotting, drive patching and rescanning",
+                "args": [
+                    {
+                        "index": 1,
+                        "type": "dword",
+                        "op": "eq",
+                        "val": 2,
+                        "comment": "FCNTL_F_SETFD"
+                    },
+                    {
+                        "index": 2,
+                        "type": "dword",
+                        "op": "eq",
+                        "val": 1,
+                        "comment": "FCNTL_FD_CLOEXEC"
+                    }
+                ]
+            },
+            {
+                "syscall": "mmap",
+                "comment": "Used by the VirtIO balloon device",
+                "args": [
+                    {
+                        "index": 0,
+                        "type": "dword",
+                        "op": "eq",
+                        "val": 50,
+                        "comment": "libc::MAP_FIXED | libc::MAP_ANONYMOUS | libc::MAP_PRIVATE"
+                    },
+                    {
+                        "index": 1,
+                        "type": "dword",
+                        "op": "eq",
+                        "val": 1,
+                        "comment": "libc::MAP_SHARED"
+                    }
+                ]
+            },
+            {
+                "syscall": "socket",
+                "comment": "Called to open the vsock UDS",
+                "args": [
+                    {
+                        "index": 0,
+                        "type": "dword",
+                        "op": "eq",
+                        "val": 1,
+                        "comment": "libc::AF_UNIX"
+                    }
+                ]
+            }
+        ]
+    }
+}

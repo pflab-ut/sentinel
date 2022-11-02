@@ -1,0 +1,20 @@
+[package]
+name = "platform"
+version = "0.1.0"
+authors = ["Joe Hattori <joe2ninja21@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.47"
+libc = "0.2.124"
+nix = "0.25.0"
+once_cell = "1.8.0"
+
+logger = { path = "../logger" }
+mem = { path = "../mem" }
+utils = { path = "../utils" }
+
+[build-dependencies]
+cc = "1.0.72"

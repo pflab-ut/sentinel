@@ -1,0 +1,9 @@
+FROM python:3.9-slim
+RUN apt update
+RUN apt install net-tools iputils-ping -y
+RUN pip3 install -U Pillow
+RUN pip3 install -U requests
+RUN pip3 install -U opencv-python-headless
+RUN pip3 install --extra-index-url https://google-coral.github.io/py-repo/ tflite_runtime
+COPY ./app/python/* /home/
+CMD ["bash"]

@@ -1,0 +1,4 @@
+pub const DEFAULT_KEEPALIVE_SECS: u64 = 7200;
+pub const DEFAULT_ACK_DELAY_MILLI_SECS: u64 = 10;
+pub const IP_DEFAULT_MCAST_TTL: u8 = 1;
+pub const IPV6_DEFAULT_MCAST_HOPS: u8 = 1;

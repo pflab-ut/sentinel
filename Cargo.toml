@@ -1,0 +1,22 @@
+[workspace]
+members = [
+    "src/auth",
+    "src/arch",
+    "src/dev",
+    "src/fs",
+    "src/linux",
+    "src/limit",
+    "src/logger",
+    "src/memmap",
+    "src/net",
+    "src/sentinel",
+    "src/platform",
+    "src/pgalloc",
+    "src/seccompiler",
+    "src/segment",
+    "src/sentinel_oci",
+    "src/time",
+    "src/usage",
+    "src/utils",
+]
+default-members = ["src/sentinel"]

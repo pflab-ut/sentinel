@@ -1,0 +1,51 @@
+[package]
+name = "sentinel"
+version = "0.1.0"
+authors = ["Joe Hattori <joe2ninja21@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.47"
+caps = "0.5.3"
+clap = { version = "3.1.0", features = ["derive"] }
+getopts = "0.2"
+goblin = "0.4.3"
+libc = "0.2.124"
+libcgroups = { git = "https://github.com/containers/Youki.git" }
+libcontainer = { git = "https://github.com/containers/Youki.git" }
+nix = "0.25.0"
+num = "0.4.0"
+oci-spec = { version = "0.5.8", features = ["runtime"] }
+once_cell = "1.8.0"
+prctl = "1.0.0"
+rand = "0.8.4"
+serde = { version = "1.0.117", features = ["derive"] }
+serde_json = "1.0.59"
+smoltcp = "0.8.1"
+url = "1.0"
+
+arch = { path = "../arch" }
+auth = { path = "../auth" }
+dev = { path = "../dev" }
+fs = { path = "../fs" }
+logger = { path = "../logger" }
+limit = { path = "../limit" }
+linux = { path = "../linux" }
+mem = { path = "../mem" }
+memmap = { path = "../memmap" }
+net = { path = "../net" }
+pgalloc = { path = "../pgalloc" }
+platform = { path = "../platform" }
+seccompiler = { path = "../seccompiler" }
+segment = { path = "../segment" }
+sentinel_oci = { path = "../sentinel_oci" }
+time = { path = "../time" }
+usage = { path = "../usage" }
+utils = { path = "../utils" }
+
+[dev-dependencies]
+oci-spec = { version = "0.5.8", features = ["runtime"] }
+
+[build-dependencies]
