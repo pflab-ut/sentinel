@@ -1,7 +1,7 @@
 # Sentinel
 
 Sentinel is a research purpose container runtime for lightweight serverless applications.
-Details are described in our WoSC 8 paper "Sentinel: A Fast and Memory-Efficient Serverless Architecture for Lightweight Applications".
+Details are described in [our paper](https://dl.acm.org/doi/10.1145/3565382.3565880).
 
 ## Prerequisites
 We use [mold](https://github.com/rui314/mold) as the linker.
